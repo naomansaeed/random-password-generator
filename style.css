@@ -10,8 +10,18 @@ body {
 
 /* Container */
 #app {
+    /* Width control */
+    width: 90%;
     max-width: 600px;
-    margin: 0;
+
+    /* Center horizontally */
+    margin: 40px auto;
+    /* Visual distinction */
+    background-color: #111;
+    padding: 24px;
+    border-radius: 8px;
+    border: 1px solid #333;
+    box-shadow: 0 0 10px rgba(0, 255, 0, 0.1); /* Very faint green glow */
     text-align: center;
 }
 
