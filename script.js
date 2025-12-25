@@ -5,11 +5,14 @@ const charset = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P'
 let passOne = document.getElementById("password1")
 let passTwo = document.getElementById("password2")
 let generateBtn = document.getElementById("generate")
-let limit = 15
 
-function genratePassword(){
+// Get the input element (once, at startup)
+let lengthInput = document.getElementById('lengthInput')
+
+
+function genratePassword(length){
     let password = '';
-    for (let i = 0; i < limit; i++) {
+    for (let i = 0; i < length; i++) {
         let randomIndex = Math.floor(Math.random() * charset.length);
         password += charset[randomIndex];
     }
@@ -17,6 +20,29 @@ function genratePassword(){
 }
 
 generateBtn.addEventListener('click', () =>{
-    passOne.textContent = genratePassword();
-    passTwo.textContent = genratePassword();
+    // Read the current value WHEN THE BUTTON IS CLICKED
+    let length = parseInt(lengthInput.value) || 15
+
+    // Pass length value to the function
+    passOne.textContent = genratePassword(length);
+    passTwo.textContent = genratePassword(length);
 });
+
+passOne.addEventListener('click', () => {
+    let temp = ''
+    navigator.clipboard.writeText(passOne.textContent);
+    temp = passOne.textContent;
+    passOne.textContent = 'Copied';
+    setTimeout(() => passOne.textContent = generatePassword(parseInt(lengthInput.value) || 15), 1000);
+    passOne.textContent = temp;
+})
+
+
+passTwo.addEventListener('click', () => {
+    let temp = ''
+    navigator.clipboard.writeText(passTwo.textContent);
+    temp = passTwo.textContent;
+    passTwo.textContent = 'Copied';
+    setTimeout(() => passTwo.textContent = generatePassword(parseInt(lengthInput.value) || 15), 1000);
+    passTwo.textContent = temp;
+})
