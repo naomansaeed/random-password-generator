@@ -29,20 +29,24 @@ generateBtn.addEventListener('click', () =>{
 });
 
 passOne.addEventListener('click', () => {
-    let temp = ''
-    navigator.clipboard.writeText(passOne.textContent);
-    temp = passOne.textContent;
-    passOne.textContent = 'Copied';
-    setTimeout(() => passOne.textContent = generatePassword(parseInt(lengthInput.value) || 15), 1000);
-    passOne.textContent = temp;
-})
+  const originalPassword = passOne.textContent;
+  navigator.clipboard.writeText(originalPassword);
+  passOne.textContent = 'Copied!';
+  
+  // After 1 second, put the original password back
+  setTimeout(() => {
+    passOne.textContent = originalPassword;
+  }, 1000);
+});
 
 
 passTwo.addEventListener('click', () => {
-    let temp = ''
-    navigator.clipboard.writeText(passTwo.textContent);
-    temp = passTwo.textContent;
-    passTwo.textContent = 'Copied';
-    setTimeout(() => passTwo.textContent = generatePassword(parseInt(lengthInput.value) || 15), 1000);
-    passTwo.textContent = temp;
-})
+  const originalPassword = passTwo.textContent;
+  navigator.clipboard.writeText(originalPassword);
+  passTwo.textContent = 'Copied!';
+  
+  // After 1 second, put the original password back
+  setTimeout(() => {
+    passTwo.textContent = originalPassword;
+  }, 1000);
+});
