@@ -8,6 +8,46 @@ body {
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
+/* Style the length input */
+#lengthInput {
+  background-color: #222;
+  color: seagreen;
+  border: 1px solid #333;
+  border-radius: 4px;
+  padding: 8px 10px;
+  font-family: monospace;
+  font-size: 16px;
+  width: 80px;
+  text-align: center;
+  margin: 10px 0 20px;
+}
+
+/* Improve focus visibility (accessibility!) */
+#lengthInput:focus {
+  outline: none;
+  border-color: seagreen;
+  box-shadow: 0 0 0 2px rgba(0, 255, 0, 0.2);
+}
+
+/* Optional: style the label */
+label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: bold;
+  color: #0f0;
+}
+
+/* Hide spin buttons */
+#lengthInput::-webkit-outer-spin-button,
+#lengthInput::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+#lengthInput {
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
+
 /* Container */
 #app {
     /* Width control */

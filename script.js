@@ -28,6 +28,7 @@ generateBtn.addEventListener('click', () =>{
     passTwo.textContent = genratePassword(length);
 });
 
+// Copy first password to clipboard upon click
 passOne.addEventListener('click', () => {
   const originalPassword = passOne.textContent;
   navigator.clipboard.writeText(originalPassword);
@@ -40,6 +41,7 @@ passOne.addEventListener('click', () => {
 });
 
 
+// Copy second password to clipboard upon click
 passTwo.addEventListener('click', () => {
   const originalPassword = passTwo.textContent;
   navigator.clipboard.writeText(originalPassword);
