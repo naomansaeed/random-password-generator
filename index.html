@@ -9,8 +9,11 @@
 <body>
     <div id="app">
         <h1>Password Generator</h1>
-        <label for="lengthInput">Password length:</label>
-        <input type="number" id="lengthInput" min="4" max="50" value="8" >
+        <div id="container">
+            <label for="lengthInput">Password length:</label>
+            <input type="number" id="lengthInput" min="4" max="50" value="8" >
+            
+        </div>
         <div id="password1" class="password"></div>
         <div id="password2" class="password"></div>
         <button id="generate">Generate Passwords</button>

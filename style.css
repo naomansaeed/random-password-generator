@@ -8,6 +8,24 @@ body {
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
+#container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    gap: 8px;
+    margin-bottom: 20px;
+} 
+
+#container label {
+  font-family: monospace;
+  font-size: 16px;
+  font-weight: bold;
+  /*padding-bottom: 12px;
+  margin-bottom: 12px; */
+  color: seagreen;
+}
+
 /* Style the length input */
 #lengthInput {
   background-color: #222;
@@ -19,7 +37,7 @@ body {
   font-size: 16px;
   width: 80px;
   text-align: center;
-  margin: 10px 0 20px;
+  margin: 0; /* ← changed from 10px 0 20px */
 }
 
 /* Improve focus visibility (accessibility!) */
@@ -29,13 +47,13 @@ body {
   box-shadow: 0 0 0 2px rgba(0, 255, 0, 0.2);
 }
 
-/* Optional: style the label */
+/* Optional: style the label 
 label {
   display: block;
   margin-bottom: 6px;
   font-weight: bold;
-  color: #0f0;
-}
+  color: green;
+}  */
 
 /* Hide spin buttons */
 #lengthInput::-webkit-outer-spin-button,
@@ -48,7 +66,7 @@ label {
   appearance: textfield;
 }
 
-/* Container */
+/* The app div */
 #app {
     /* Width control */
     width: 90%;
@@ -62,8 +80,13 @@ label {
     border-radius: 8px;
     border: 1px solid #333;
     box-shadow: 0 0 10px rgba(0, 255, 0, 0.1); /* Very faint green glow */
+    
+    
     text-align: center;
+    
 }
+
+
 
 /* Password displays */
 .password {
