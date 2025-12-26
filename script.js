@@ -41,6 +41,10 @@ function defineConstrains (length){
     if (includeSymbols.checked) {
         charset = [...charset, ...symbols] //symbols;
     }
+
+    // Safety: if somehow charset is empty (shouldn't happen), fallback
+    if (charset.length === 0) charset = ['a'];
+    
     return genratePassword(length)
     //return length
 }
