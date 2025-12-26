@@ -1,6 +1,6 @@
 
-const charset = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z',
-    'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z',0,1,2,3,4,5,6,7,8,9,'!','@','#','$','%','^','&','*','(',')']
+//const charset = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z',
+//    'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z',0,1,2,3,4,5,6,7,8,9,'!','@','#','$','%','^','&','*','(',')']
 
 const uppers = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z']
 const lowers = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z']
@@ -12,8 +12,16 @@ let passTwo = document.getElementById("password2")
 let generateBtn = document.getElementById("generate")
 
 // Get the input element (once, at startup)
-let lengthInput = document.getElementById('lengthInput')
+let lengthInput = document.getElementById("lengthInput")
 
+let includeNumbers = document.getElementById("includeNumbers")
+let includeSymbols = document.getElementById("includeSymbols")
+
+
+let charset = []
+//defineConstrains(8)
+//console.log(charset)
+//console.log(includeNumbers.checked);
 
 function genratePassword(length){
     let password = '';
@@ -24,13 +32,26 @@ function genratePassword(length){
     return password
 }
 
+// This function checks whether to include numbers & symbols or not depending on the condition of relevant checkbox at the time of button press
+function defineConstrains (length){
+    charset = [...uppers, ...lowers] //uppers + lowers;
+    if (includeNumbers.checked) {
+        charset = [...charset, ...numbers] //numbers;
+    }
+    if (includeSymbols.checked) {
+        charset = [...charset, ...symbols] //symbols;
+    }
+    return genratePassword(length)
+    //return length
+}
+
 generateBtn.addEventListener('click', () =>{
     // Read the current value WHEN THE BUTTON IS CLICKED
     let length = parseInt(lengthInput.value) || 15
 
     // Pass length value to the function
-    passOne.textContent = genratePassword(length);
-    passTwo.textContent = genratePassword(length);
+    passOne.textContent = defineConstrains(length)// genratePassword(length);
+    passTwo.textContent = defineConstrains(length)// genratePassword(length);
 });
 
 // Copy first password to clipboard upon click

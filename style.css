@@ -55,6 +55,33 @@ label {
   color: green;
 }  */
 
+/* Style checkboxes to match your green theme */
+input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  accent-color: seagreen; /* This changes the fill/check color */
+  margin-right: 6px;
+}
+
+/* Style labels near checkboxes */
+.options label {
+  font-family: monospace;
+  color: seagreen;
+  display: flex;
+  align-items: center;
+  margin: 0 10px 10px 0;
+  cursor: pointer;
+}
+
+/* Container for checkboxes */
+.options {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin: 16px 0 20px;
+}
+
 /* Hide spin buttons */
 #lengthInput::-webkit-outer-spin-button,
 #lengthInput::-webkit-inner-spin-button {
