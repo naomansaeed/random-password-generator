@@ -82,3 +82,23 @@ passTwo.addEventListener('click', () => {
     passTwo.textContent = originalPassword;
   }, 1000);
 });
+
+const themeToggle = document.getElementById('themeToggle');
+
+// Check if user previously chose light mode
+if (localStorage.getItem('theme') === 'light') {
+  document.body.classList.add('light');
+  themeToggle.textContent = '🌑 Dark Mode';
+}
+
+themeToggle.addEventListener('click', () => {
+  document.body.classList.toggle('light');
+  
+  if (document.body.classList.contains('light')) {
+    themeToggle.textContent = '🌑 Dark Mode';
+    localStorage.setItem('theme', 'light');
+  } else {
+    themeToggle.textContent = '🌓 Light Mode';
+    localStorage.setItem('theme', 'dark');
+  }
+});

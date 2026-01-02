@@ -1,85 +1,99 @@
-/* Reset & base */
+:root {
+  /* === Dark mode (default) === */
+  --bg-body: #000;
+  --bg-app: #111;
+  --bg-panel: #222;
+  --text-primary: seagreen;
+  --border-color: #333;
+  --button-bg: seagreen;
+  --button-text: #222;
+  --focus-glow: rgba(0, 255, 0, 0.2);
+}
+
+body.light {
+  /* === Light mode overrides === */
+  --bg-body: #ffffff;
+  --bg-app: #f8f8f8;
+  --bg-panel: #e8e8e8;
+  --text-primary: #006400; /* dark green */
+  --border-color: #ccc;
+  --button-bg: #2e8b57; /* forest green */
+  --button-text: #ffffff;
+  --focus-glow: rgba(46, 139, 87, 0.2); /* darker green glow */
+}
 
 body {
-    margin: 0;
-    padding: 20px;
-    background-color: black;
-    color: seagreen;
-    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  padding: 20px;
+  background-color: var(--bg-body);
+  color: var(--text-primary);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-#container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    
-    gap: 8px;
-    margin-bottom: 20px;
-} 
+#app {
+  width: 90%;
+  max-width: 600px;
+  margin: 40px auto;
+  background-color: var(--bg-app);
+  padding: 24px;
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+  box-shadow: 0 0 10px var(--focus-glow);
+  text-align: center;
+}
 
-#container label {
+.password {
+  background-color: var(--bg-panel);
+  padding: 12px;
+  margin: 10px 0;
+  border-radius: 4px;
+  word-break: break-all;
+  color: var(--text-primary); /* explicit, though inherited */
+}
+
+button {
+  background-color: var(--button-bg);
+  color: var(--button-text);
+  border: none;
+  padding: 10px 20px;
   font-family: monospace;
-  font-size: 16px;
   font-weight: bold;
-  /*padding-bottom: 12px;
-  margin-bottom: 12px; */
-  color: seagreen;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 20px;
 }
 
-/* Style the length input */
 #lengthInput {
-  background-color: #222;
-  color: seagreen;
-  border: 1px solid #333;
+  background-color: var(--bg-panel);
+  color: var(--text-primary);
+  border: 1px solid var(--border-color);
   border-radius: 4px;
   padding: 8px 10px;
   font-family: monospace;
   font-size: 16px;
   width: 80px;
   text-align: center;
-  margin: 0; /* ← changed from 10px 0 20px */
+  margin: 0;
 }
 
-/* Improve focus visibility (accessibility!) */
 #lengthInput:focus {
   outline: none;
-  border-color: seagreen;
-  box-shadow: 0 0 0 2px rgba(0, 255, 0, 0.2);
+  border-color: var(--button-bg);
+  box-shadow: 0 0 0 2px var(--focus-glow);
 }
 
-/* Optional: style the label 
-label {
-  display: block;
-  margin-bottom: 6px;
-  font-weight: bold;
-  color: green;
-}  */
-
-/* Style checkboxes to match your green theme */
 input[type="checkbox"] {
   width: 18px;
   height: 18px;
-  accent-color: seagreen; /* This changes the fill/check color */
+  accent-color: var(--button-bg);
   margin-right: 6px;
 }
 
-/* Style labels near checkboxes */
+#container label,
 .options label {
   font-family: monospace;
-  color: seagreen;
-  display: flex;
-  align-items: center;
-  margin: 0 10px 10px 0;
-  cursor: pointer;
-}
-
-/* Container for checkboxes */
-.options {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 16px;
-  margin: 16px 0 20px;
+  color: var(--text-primary);
+  /* ... other props unchanged */
 }
 
 /* Hide spin buttons */
@@ -88,52 +102,56 @@ input[type="checkbox"] {
   -webkit-appearance: none;
   margin: 0;
 }
+
+
+/* Group spacing */
+#container,
+.options,
+.password,
+button {
+  margin-bottom: 1.2rem; /* ~20px, but scalable */
+}
+
+/* Remove extra margin on last button */
+button:last-of-type {
+  margin-bottom: 0;
+}
+
+
+button,
 #lengthInput {
-  -moz-appearance: textfield;
-  appearance: textfield;
+  padding: 10px 16px; /* more balanced horizontal padding */
+  font-size: 1rem;
+  height: auto; /* let padding define height */
 }
 
-/* The app div */
-#app {
-    /* Width control */
-    width: 90%;
-    max-width: 600px;
-
-    /* Center horizontally */
-    margin: 40px auto;
-    /* Visual distinction */
-    background-color: #111;
-    padding: 24px;
-    border-radius: 8px;
-    border: 1px solid #333;
-    box-shadow: 0 0 10px rgba(0, 255, 0, 0.1); /* Very faint green glow */
-    
-    
-    text-align: center;
-    
+button:hover {
+  filter: brightness(1.1);
+  transition: filter 0.2s;
 }
 
-
-
-/* Password displays */
-.password {
-    background-color: #222;
-    padding: 12px;
-    margin: 10px 0;
-    border-radius: 4px;
-    /* This ensures long passwords don't overflow */
-    word-break: break-all;
+#lengthInput:hover {
+  border-color: var(--button-bg);
 }
 
-/* Button */
-#generate {
-    background-color: seagreen;
-    color: #222;
-    border: none;
-    padding: 10px 20px;
-    font-family: monospace;
-    font-weight: bold;
-    border-radius: 4px;
-    cursor: pointer;
-    margin-top: 20px;
+button:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--focus-glow);
+}
+
+input[type="checkbox"]:focus {
+  outline: 2px solid var(--focus-glow);
+  border-radius: 4px;
+}
+
+body {
+  transition: background-color 0.3s, color 0.3s;
+}
+
+#app, .password, button, #lengthInput {
+  transition: background-color 0.3s, border-color 0.3s, box-shadow 0.3s;
+}
+
+#themeToggle {
+    padding-top: 8px;
 }
